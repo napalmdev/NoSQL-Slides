@@ -1,7 +1,7 @@
 #Conceito de NoSQL e intro ao MongoDB
 
 
-##NO-SQL
+#NO-SQL
 >Apesar do impacto do termo o mesmo não significa não ao SQL e sim Not Only SQL 
 e é um movimento de Bancos de Dados que não trabalham no modelo Relacional.
 
@@ -43,30 +43,35 @@ etc..
 
 ####1. 	Chave-Valor
 <ul>
-	<li>Redis</li>
-	<li>Riak</li>
-	<li>Memcached</li>
+	<li>Redis - http://redis.io/</li>
+	<li>Riak - http://basho.com/riak/</li>
+	<li>Memcached - http://memcached.org/</li>
 </ul>		
 ####2. 	Coluna
 <ul>
-	<li>HBase(Yahoo)</li>
-	<li>Cassandra(Facebook)</li>
-	<li>BigTable(Google)</li>
+	<li>HBase(Yahoo) - http://hbase.apache.org/</li>
+	<li>Cassandra(Facebook) - http://cassandra.apache.org/</li>
+	<li>BigTable(Google) - http://en.wikipedia.org/wiki/BigTable</li>
 </ul>		
 ####3. 	Documento
 <ul>
-	<li>CouchDB</li>
-	<li>MongoDB  \o/</li>
+	<li>CouchDB - http://couchdb.apache.org/</li>
+	<li>MongoDB - http://www.mongodb.org/  \o/</li>
 </ul>
 ####4. 	Grafo
 <ul>
-	<li>Neo4J</li>
-	<li>OrirenteDB(Misto)</li>
+	<li>Neo4J - http://www.neo4j.org/</li>
+	<li>OrirenteDB(Misto) - http://www.orientechnologies.com/orientdb/</li>
 </ul>
 
 
 
-##MongoDB
+
+
+
+
+
+#MongoDB
 >O MongoDB é um banco NoSQL orientado a documentos feito em C++ e criado em 2007 pelos criadores da DoubleClick. Os mesmos após vender a  empresa para a Google e ficar fora do mercado por um ano criaram o MongoDB pois estavam cansados da dificuldade de escalar bancos relacionais.
 
 
@@ -74,9 +79,94 @@ etc..
 >Apesar de ser escrito em C++ o shell do MongoDB roda JavaScript o que facilita muito na manutenção inicial do banco pois pode-se criar desde variáveis até funções e etc, fora é claro que o JSON utilizado pelo MongoDB equivale a um Objeto Literal no JS.
 
 
+###Quem usa?
+>Antes de falar sobre as funcionalidades do MongoDB, é interessante avaliar quais empresas hoje utilizam o mesmo, e tirar as dúvidas sobre a credibilidade dele no mercado, vamos a alguns cases:<br />
+[Clique aqui](http://www.mongodb.com/customers) para conhecer alguns cases de sucesso com MongoDB e inclusive depoimentos sobre como foi a implantação do mesmo nestas empresas.<br />
+No Brasil também temos grandes empresas utilizando o MongoDB como Globo.com e EasyTaxi.
+
+
+
+###Equivalentes de DB's Relacionais em MongoDB
+<table>
+	<tr><td>DATABASE</td><td>DATABASE</td></tr>
+	<tr><td>TABLE</td><td>COLLECTION</td></tr>
+	<tr><td>ROWS</td><td>DOCUMENT JSON</td></tr>
+	<tr><td>QUERY</td><td>QUERY</td></tr>
+	<tr><td>INDEX</td><td>INDEX</td></tr>
+	<tr><td>PARTITION</td><td>SHARD</td></tr>
+</table>
+
+
+
 ###JSON
->O MongoDB manipula os dados através de JSON(JavaScript Object Notation), o JSON é um formato utilizado para integrar aplicações assim como o XML porém com uma sintaxe mais limpa e simples de se trabalhar, principalmente para quem utiliza JavaScript.
+>O MongoDB retorna os dados no formato JSON(JavaScript Object Notation), o JSON é um formato utilizado para integrar aplicações assim como o XML, porém com uma sintaxe mais limpa e simples de se trabalhar, principalmente para quem utiliza JavaScript, veja a seguir um exemplo de JSON:
+
+
+	{
+	    "glossary": {
+	        "title": "example glossary",
+			"GlossDiv": {
+	            "title": "S",
+				"GlossList": {
+	                "GlossEntry": {
+	                    "ID": "SGML",
+						"SortAs": "SGML",
+						"GlossTerm": "Standard Generalized Markup Language",
+						"Acronym": "SGML",
+						"Abbrev": "ISO 8879:1986",
+						"GlossDef": {
+	                        "para": "A meta-markup language, used to create markup languages such as DocBook.",
+							"GlossSeeAlso": ["GML", "XML"]
+	                    },
+						"GlossSee": "markup"
+	                }
+	            }
+	        }
+	    }
+	}
+
+
+
 
 
 ###BSON X JSON
->Operacionalmente o MongoDb utiliza JSON, porém, ao salvar os dados no disco o formato utilizado pelo MongoDB é o BSON, que é a forma binária do JSON, ao salvar os dados o MongoDB pré-aloca um espaço para que os dados sejam salvos no mesmo setor do HD, agilizando assim tanto leitura quanto escrita de informação.
+>Apesar de o MongoDB retornar os dados em JSON, internamente o formato utilizado é o BSON( forma binária do JSON ).
+
+
+
+
+###Schemaless
+>O MongoDB é considerado um banco **Schemaless**, ou ainda, **Dynamic Schema**, ou seja, não possui uma estrutura fixa. Diferentemente do que é feito em Bancos de Dados Relacionais, no MongoDB é possível criar estruturas inteiramente heterogêneas, cada **Documento** da **Collection** pode ter campos que não existem em outros documentos, e para localizar campos que podem ou não existir em determinado documento utilizamos o operador **$exist**.
+
+
+
+
+###Pré-alocação de Espaço no HD
+>Quando criamos uma base de dados nova no MongoDB ele pré-aloca um espaço no HD para que os dados sejam salvos no mesmo setor do disco, fazendo isto ele previne a fragmentação de dados agilizando assim tanto leitura quanto escrita de informação. Quando o tamanho da base está quase sendo preenchido este espaço de pré-alocação é dobrado automaticamente pelo MongoDB.
+
+
+
+
+###Schema Design
+>Apesar do MongoDB ser **Dynamic Schema**, é interessante definir uma estrutura a qual sua aplicação irá seguir para inserir dados no Banco, é bom lembrar também que ao pensar em **Schema Design** em MongoDB, deve-se primeiro livrar-se do pensamento relacional, pois uma banco NoSQL qualquer criado com Schema baseado em banco relacional não utlizará todos seus recursos, e isso acabaria invalidando o uso de um Banco de Dados  Não-Relacional.<br> 
+**Obs:** Os drivers de MongoDB para qualquer linguagem já vem com esta opção de criar Schemas.
+
+
+
+
+###Capped Collection
+>Existe um tipo especial de Collection em MongoDB conhecido como **Capped Collection**, o que ela faz é trabalhar em modo cíclico, ou seja, quando seu tamanho total(Fixo e Determinado pelo DBA) for preenchido, ela começará a se sobrescrever, causando um efeito de loop. A Capped Collection é muito utilizada para gravação de Log's do sistema, após um estudo apurado da carga de dados que a empresa poderá gerar, é decidido qual o tamanho terá a Collection, e esta gravará **n** anos de Log até ser preenchida e começar a se sobrescrever.
+
+
+
+
+###NO SQL
+>O MongoDB é um banco de dados literalmente **Não-SQL**, ou seja ele não utiliza a linguagem SQL em suas Queries, mas então se ele não utiliza SQL o quê ele utiliza?<br>
+Ele utiliza funções próprias para isso, a maioria delas listadas abaixo:
+
+
+|Comando  |  Sintaxe  |  Descrição|
+|----------------|---------------|--------------------------------------------------------------------------------------------------------------|
+FIND 	|  db.example.find({});  |  Busca todos os documentos na Collection **example**  
+COUNT  |  db.example.count();  |  Conta quantos Documentos existem na Collection **example** 
+SORT  |  db.example.find().sort({"_id":1});  |  Busca todos os documentos na Collection **example** e ordena pelo campo _id em ordem crescente
