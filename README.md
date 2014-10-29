@@ -161,8 +161,7 @@ No Brasil também temos grandes empresas utilizando o MongoDB como Globo.com e E
 
 
 ###Não-SQL
->O MongoDB é um banco de dados literalmente **Não-SQL**, ou seja ele não utiliza a linguagem SQL em suas Queries, mas então se ele não utiliza SQL o quê ele utiliza?<br>
-Ele utiliza funções próprias para isso, a maioria delas listadas abaixo:
+>O MongoDB é um banco de dados literalmente **Não-SQL**, ou seja ele não utiliza a linguagem SQL em suas Queries, em vez disso ele utiliza funções próprias, algumas delas listadas abaixo:
 
 
 |Comando  |  Sintaxe  |  Descrição|
@@ -172,3 +171,4 @@ COUNT  |  db.example.count();  |  Conta quantos Documentos existem na Collection
 SORT  |  db.example.find().sort({"_id":1});  |  Busca todos os documentos na Collection **example** e ordena pelo campo _id em ordem crescente
 INSERT  |  db.example.insert({"Nome":"Denis Nunes"}); | Insere um novo Documento na Collection **example** com os campos _id e nome(Denis Nunes) 
 REMOVE | db.example.remove({"Nome":"Denis Nunes"}); | Deleta o Documento filtrado pelo parâmetro, neste caso o Documento inserido anteriormente
+SAVE  |  db.example |  
