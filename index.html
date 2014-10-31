@@ -69,21 +69,25 @@
 
 
 
-				<section data-background="#069">
+				<section>
 					<section>
-						<h2>Sobre NoSQL</h2>	
+						<img src="bg/03.jpg" alt="">	
+					</section>					
+					<section>
+						<img src="bg/04.jpg" alt="">	
+					</section>					
+					<section>
+						<img src="bg/05.jpg" alt="">	
+					</section>					
+					<section>
+						<h2>Saia da Zona de Conforto</h2>
+						<img src="bg/comfort-zone.jpg" alt="">	
+					</section>					
+					<section>
+						<h2>Todo Desenvolvedor deve conhecer NoSQL</h2>
 					</section>
 					<section>
-						<h3>Todo Desenvolvedor deve conhecer NoSQL.</h3>
-					</section>
-					<section>
-						<h2>Como conheci o NoSQL.</h2>
-					</section>
-					<section>
-						<h2>O que é NoSQL.</h2>
-					</section>
-					<section>
-						<h2>O termo NoSQL.</h2>
+						<h2>Como conheci o NoSQL</h2>
 					</section>
 				</section>
 				
@@ -93,10 +97,10 @@
 
 				<section data-background="#600">
 					<section>
-						<h2>Por que usar NoSQL?</h2>	
+						<h1>Por que usar NoSQL?</h1>	
 					</section>
 					<section>
-						<h3>Funcionalidades e forma de Modelagem diferenciadas</h3>
+						<h2>Funcionalidades e forma de Modelagem diferenciadas</h2>
 					</section>
 					<section>
 						<h2>Escalabilidade Horizontal</h2>
@@ -114,7 +118,7 @@
 
 				<section data-background="#204000">
 					<section>
-						<h2>Modelos de Banco NoSQL</h2>	
+						<h1>Modelos de Banco NoSQL</h1>	
 					</section>
 					<section>
 						<h2>Chave - Valor</h2>
@@ -144,15 +148,16 @@
 						<img src="./bg/mongodb.png">
 					</p>
 					</section>
-					<section data-background="./bg/JS.jpg" data-background-size="600px">
-					</section>
-					<section data-background="./bg/cases-mongodb.jpg" data-background-size="900px">
+					<section data-background-size="800px">
+						<h2>Quem usa?</h2>
+						<img src="./bg/cases-mongodb.jpg">
 					</section>
 					<section>
 						<h2>Termos Técnicos MongoDB</h2>
 						<img src="bg/mongo-termos.png" alt="">	
+					</section>					
+					<section data-background="./bg/JS.jpg" data-background-size="600px">
 					</section>
-					
 					<section>
 						<h2>JSON</h2>
 					    <pre>
@@ -182,13 +187,157 @@
 					<section data-background="#111" data-background-size="1000px">
 						<img src="bg/json-bson.jpg">
 					</section>	
-					<section data-background-size="1000px">
-						
-						
-						<h3>Pré-aloca Espaço em Disco</h3>
+					<section>
+						<h2>Pré-aloca Espaço em Disco</h2>
 						<img src="bg/pre-aloc.jpg">
-						
 					</section>										
+					<section>
+						<h2>Schemaless</h2>
+						<img src="bg/schemaless.jpg">
+					</section>										
+					<section>
+						<h2>Capped Collection</h2>
+						<img src="bg/Capped.jpg">
+					</section>	
+					<section data-background="#111">						
+						<h2>CRUD em MongoDB</h2>
+						<h5>CREATE</h5>
+						<pre>
+					    		<code data-trim>
+					    		db.exemplo.insert({
+					    		Aluno:"Denis",
+					    		sobrenome:"Nunes", 
+					    		materias:["
+					    			Estrutura de Dados",
+					    			"OOP", 
+					    			"Produção de Textos"]});
+					    		</code>
+					    	</pre>							
+						<h5>READ</h5>
+						<pre>
+					    		<code data-trim>
+					    		db.exemplo.find();
+					    		</code>
+					    	</pre>
+					</section>
+					<section data-background="#111">						
+						<h2>CRUD em MongoDB</h2>
+						<h5>UPDATE</h5>
+						<pre>
+					    		<code data-trim>
+					    		 db.nome_colection.update( {query_da_busca}, {operador_mod}, upsert, multi );
+					    		</code> 
+					    		<code data-trim>
+					    		 db.exemplo.update({Aluno:"Denis"},{$set:{sobrenome:"Zuero"}});
+					    		</code>
+					    	</pre>
+					    	<h5>SAVE</h5>
+						<pre>
+					    		<code data-trim>
+					    		 var busca = db.exemplo.findOne({Aluno:"Denis"});
+					    		 busca.Aluno = "Zuero";	
+					    		</code> 
+					    		<code data-trim>
+					    		 db.exemplo.save(busca);
+					    		</code>
+					    	</pre>					    								
+					</section>
+					<section data-background="#111">						
+						<h2>CRUD em MongoDB</h2>
+						<h5>DELETE</h5>
+						<pre>
+					    		<code data-trim>
+					    		db.exemplo.remove({Aluno:"Denis"});
+					    		</code>
+					    	</pre>							
+						<h5>DROP(Apaga a Collection)</h5>
+						<pre>
+					    		<code data-trim>
+					    		db.exemplo.drop();
+					    		</code>
+					    	</pre>
+					</section>	
+					<section data-background="#111">
+						<h2>Operadores</h2>						
+						<p class="fragment">$lt / $lte</p>
+						
+						<p class="fragment">$gt / $gte</p>
+						
+						<p class="fragment">$or / $nor</p>
+						
+						<p class="fragment">$ne</p>
+						
+						<p class="fragment">$in / $nin</p>
+						
+						<p class="fragment">$exists</p>
+						
+						<p class="fragment">$all</p>
+
+						<p class="fragment">$size</p>
+												
+					</section>							
+					<section data-background="#111">
+						<h2>Operadores de Modificação</h2>						
+						<p class="fragment">$set</p>
+						
+						<p class="fragment">$unset</p>
+						
+						<p class="fragment">$inc</p>
+						
+						<p class="fragment">$pull</p>
+						
+						<p class="fragment">$pullAll</p>
+						
+						<p class="fragment">$push</p>
+						
+						<p class="fragment">$pushAll</p>
+												
+					</section>				
+					<section data-background="#111">						
+						<h2>Contador(count)</h2>
+						<h5>Conta o total de documentos de uma collection</h5>
+						<pre>
+					    		<code data-trim>
+					    		db.exemplo.count({});
+					    		</code>
+					    	</pre>							
+						<h5>Conta a quantidade de documentos de uma busca</h5>
+						<pre>
+					    		<code data-trim>
+					    		db.exemplo.find({materia:"OOP"}).count();
+					    		</code>
+					    	</pre>
+					</section>
+					<section data-background="#111">						
+						<h2>Ordenação(sort)</h2>
+						<h5>Ordena o resultado da busca pelo campo Aluno em ordem crescente</h5>
+						<pre>
+					    		<code data-trim>
+					    		db.exemplo.find({}).sort({Aluno:1});
+					    		</code>
+					    	</pre>							
+						<h5>Ordena o resultado da busca pelo campo sobrenome em ordem decrescente</h5>
+						<pre>
+					    		<code data-trim>
+					    		db.exemplo.find({}).sort({sobrenome:-1});
+					    		</code>
+					    	</pre>
+					</section>											
+					<section data-background="#111">						
+						<h2>Índice</h2>
+						<h5>Cria um Índice para a Collection</h5>
+						<pre>
+					    		<code data-trim>
+					    		db.exemplo.ensureIndex({Aluno:1});
+					    		</code>
+					    	</pre>							
+						<h5>Exibe Índices da Collection</h5>
+						<pre>
+					    		<code data-trim>
+					    		db.exemplo.getIndexes();
+					    		</code>
+					    	</pre>
+					</section>
 				</section>
 			</div>
 		</div>
